@@ -7,6 +7,7 @@ public class Main {
 
 //        brute_force.bf_2309(args);    //아홉난쟁이 문제
 //        brute_force.bf_3085(args);  //사탕게임
-        brute_force.bf_1476(args);  //날짜계산
+//        brute_force.bf_1476(args);  //날짜계산
+            brute_force.bf_1107(args);  //리모컨
     }
 }

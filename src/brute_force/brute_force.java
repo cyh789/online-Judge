@@ -1,5 +1,7 @@
 package brute_force;
 
+import org.w3c.dom.ls.LSOutput;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -126,6 +128,53 @@ public class brute_force {
                 break;
             }
         }
+    }
+
+    //리모컨
+
+    static boolean[] broken = new boolean[10];
+    public static void bf_1107(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt(); // 이동 원하는 채널
+        int m = sc.nextInt(); // 고자안 채널 갯수
+        for (int i = 0; i < m; i++) {
+            int x = sc.nextInt();
+            broken[x] = true; // 트루면 고장!
+        }
+
+        int ans = Math.abs(n - 100);
+
+        for (int i = 0; i <= 999999; i++) {
+            int len = possible(i);
+            if (len > 0) {
+                int press = i - n;
+                if (press < 0) press = -press;
+
+                if (ans > len + press) {
+                    ans = len + press;
+                }
+            }
+        }
+        System.out.println(ans);
+    }
+
+    private static int possible(int c) {
+        if (c == 0) { //0일때 예외처리
+            if (broken[0]) {
+                return 0;
+            } else {
+                return 1;
+            }
+        }
+        int len = 0;
+        while (c > 0) {
+            if (broken[c % 10]) {
+                return 0;
+            }
+            len += 1;
+            c /= 10;
+        }
+        return len;
     }
 }
 
