@@ -3,6 +3,10 @@ import brute_force.brute_force;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Scanner;
 
 public class Main {
 
@@ -15,6 +19,9 @@ public class Main {
 //        brute_force.bf_1107(args);  //리모컨
 //        brute_force.bf_14500(args);  //테트로미노
 //        brute_force.bf_6064(args);  //카잉달력
-        brute_force.bf_1748(args);  //수 이어 쓰기1
+//        brute_force.bf_1748(args);  //수 이어 쓰기1
+//        brute_force.dfs_bfs_1260(args);  //DFS와 BFS(인접리스트)
+        brute_force.dfs_bfs_1260_2(args);  //DFS와 BFS(인접리스트)
+
     }
 }

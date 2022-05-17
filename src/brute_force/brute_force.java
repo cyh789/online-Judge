@@ -1,12 +1,11 @@
 package brute_force;
 
-import org.w3c.dom.ls.LSOutput;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Scanner;
 
 public class brute_force {
@@ -337,4 +336,151 @@ public class brute_force {
     }
 
 
+
+    //DFS와 BFS(인접리스트)
+    //함수에서 사용할 변수들
+    static int[][] a_1260;   //간선 연결상태
+    static boolean check_1260[]; //확인 여부
+    static int n_1260; //정점개수
+    static int m_1260; //간선개수
+    static int start_1260; //시작정점
+
+    public void dfs_bfs_1260(String[] args) {
+        //인접리스트 구현
+        Scanner sc = new Scanner(System.in);
+        n_1260 = sc.nextInt();    // 정점의 갯수
+        m_1260 = sc.nextInt();    // 간선의 갯수
+        start_1260 = sc.nextInt();    // 정점의 시작점 번호
+
+        a_1260 = new int[1001][1001];   //좌표를 모두 받아들이기 위해 +1 선언
+        check_1260 = new boolean[1001]; //초기값은 false
+
+        //간선 연결상태 저장
+        for (int i = 0; i < m_1260; i++) {
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+
+            a_1260[x][y] = a_1260[y][x] = 1;
+        }
+
+        //문제 풀이 시작
+        dfs_1260(start_1260);    //dfs
+
+        check_1260 = new boolean[1001];   //확인상태 초기화
+        System.out.println();   //줄바꿈
+
+        bfs_1260();    //bfs
+    }
+
+    //시작점을 변수로 받아 확인, 출력 후 다음 연결점을 찾아 시작점을 변경하여 재호출
+    private static void dfs_1260(int x) {
+        // 1. check[x] = true => 방문후 표시(dfs의 목적은 모든 정점을 1번씩 방문하는 것이므로, 방문을 표시해야 한다.)
+        check_1260[x] = true;
+        System.out.print(x + " ");
+
+        // 인접리스트 방식
+        // 2. x->i => x에서 i로 가는 다음 정점을 찾아줘야 한다. 이를 만족하는 조건은 아래 2가지이다.
+        // 2-1) a[x][i]==1 => x와 i 사이에 간선이 존재한다.
+        // 2-2) check[i]==false => i를 방문한 적 없어야 한다.
+        // 위 2가지 조건을 만족하면 x->i(x에서 i로 이동 가능) 이므로 dfs(i)를 호출한다.
+        for (int i = 1; i <= n_1260; i++) {
+            if (a_1260[x][i]==1 && check_1260[i]==false) {
+                dfs_1260(i);
+            }
+        }
+    }
+
+    private static void bfs_1260() {
+        Queue<Integer> q = new LinkedList<Integer>();
+        // 1. 시작점
+        // check[start] = true => 1을 방문한 것으로 표시
+        // q.offer(start) => 1을 큐에 넣음
+        check_1260[start_1260] = true; q.offer(start_1260);
+        System.out.print(start_1260 + " ");
+
+        // 2. 범위 : 큐가 비어있지 않은 동안 (=큐가 비워지면 종료)
+        while (!q.isEmpty()) {
+            // 3. 큐의 처음값을 x로 선언.
+            // int x = q.poll() => 큐의 처음 값을 제거한다.
+            int x = q.poll();
+//            int x = q.peek(); q.poll();
+
+            // 인접리스트 방식
+            // 4. 이용 가능한도를 i에 대해 설정한다
+            // x->i => x에서 i로 가는 다음 정점을 찾아줘야 한다. 이를 만족하는 조건은 아래 2가지이다.
+            // 4-1) a[x][i]==1 => x와 i 사이에 간선이 존재한다.
+            // 4-2) check[i]==false => i를 방문한 적 없어야 한다.
+            for (int i = 1; i <= n_1260; i++) {
+                if (a_1260[x][i]==1 && check_1260[i]==false) {
+                    // 위 2가지 조건을 만족한다면, 방문한 것을 표시한다(BFS의 경우 큐를 제거하는 시점에, 방문후로 표시해야 한다(DFS와 방문 표시 위치가 다름))
+                    check_1260[i] = true;
+                    // 큐에 넣어준다.
+                    q.offer(i);
+                    System.out.print(i + " ");
+                }
+            }
+        }
+    }
+
+
+
+    //DFS와 BFS(인접리스트)
+    static int[][] a_1260_2;   //간선 연결상태
+    static boolean[] check_1260_2;  //방문표시
+    static int n_1260_2;    //정점개수
+    static int m_1260_2;    //간선개수
+    static int start_1260_2;    //시작정점
+
+    public void dfs_bfs_1260_2(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n_1260_2 = sc.nextInt();
+        m_1260_2 = sc.nextInt();
+        start_1260_2 = sc.nextInt();
+
+        a_1260_2 = new int[1001][1001];
+        check_1260_2 = new boolean[1001];
+
+        for (int i = 0; i < m_1260_2; i++) {
+            int x = sc.nextInt();
+            int y = sc.nextInt();
+
+            a_1260_2[x][y] = a_1260_2[y][x] = 1;
+        }
+
+        dfs_1260_2(start_1260_2);
+
+        System.out.println();
+        check_1260_2 = new boolean[1001];
+
+        bfs_1260_2();
+    }
+
+    private void dfs_1260_2(int x) {
+        check_1260_2[x] = true;
+        System.out.print(x + " ");
+
+        for (int i = 1; i <= n_1260_2; i++) {
+            if (a_1260_2[x][i]==1 && check_1260_2[i]==false) {
+                dfs_1260_2(i);
+            }
+        }
+    }
+
+    private void bfs_1260_2() {
+        Queue<Integer> q = new LinkedList<Integer>();
+        check_1260_2[start_1260_2] = true; q.offer(start_1260_2);
+        System.out.print(start_1260_2 + " ");
+
+        while (!q.isEmpty()) {
+            int x = q.peek(); q.poll();
+
+            for (int i = 1; i <= n_1260_2; i++) {
+                if (a_1260_2[x][i]==1 && check_1260_2[i]==false) {
+                    check_1260_2[i] = true;
+                    System.out.print(i + " ");
+                    q.offer(i);
+                }
+            }
+        }
+    }
 }
