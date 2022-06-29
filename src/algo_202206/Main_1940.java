@@ -5,6 +5,10 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+/**
+ * 백준 실버4
+ * https://www.acmicpc.net/problem/1940
+ */
 public class Main_1940 {
     public static void main(String[] args) throws Exception {
 

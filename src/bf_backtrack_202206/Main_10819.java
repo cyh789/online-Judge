@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
+/**
+ * 백준 실버2
+ * https://www.acmicpc.net/problem/10819
+ */
 public class Main_10819 {
 
     private static boolean[] visit;
