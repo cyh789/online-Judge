@@ -120,4 +120,8 @@ https://www.acmicpc.net/problem/2637 장난감조립(응용)                    
 
 아직 방향을 못 잡았다면, 이 문제들로 시작해보길 추천한다.
 
+
+### 정답(설명) 참고용 블로그
+- https://codingrapper.tistory.com/27
+
 ​

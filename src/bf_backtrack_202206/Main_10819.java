@@ -1,4 +1,4 @@
-package bf_202206;
+package bf_backtrack_202206;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
