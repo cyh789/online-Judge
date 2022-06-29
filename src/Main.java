@@ -21,7 +21,8 @@ public class Main {
 //        brute_force.bf_6064(args);  //카잉달력
 //        brute_force.bf_1748(args);  //수 이어 쓰기1
 //        brute_force.dfs_bfs_1260(args);  //DFS와 BFS(인접리스트)
-        brute_force.dfs_bfs_1260_2(args);  //DFS와 BFS(인접리스트)
+//        brute_force.dfs_bfs_1260_2(args);  //DFS와 BFS(인접리스트)
+        brute_force.dfs_bfs_2178(args);  //미로탐색 - BFS(최단경로)
 
     }
 }

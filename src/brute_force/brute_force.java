@@ -3,10 +3,7 @@ package brute_force;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.Queue;
-import java.util.Scanner;
+import java.util.*;
 
 public class brute_force {
 
@@ -482,5 +479,70 @@ public class brute_force {
                 }
             }
         }
+    }
+
+
+    //미로탐색 - BFS(최단경로)
+    public void dfs_bfs_2178(String[] args) throws IOException {
+        BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(bf.readLine());
+
+        int n_2178 = Integer.parseInt(st.nextToken());
+        int m_2178 = Integer.parseInt(st.nextToken());
+        int[][] a_2178 = new int[n_2178][m_2178];   // 미로를 저장할 배열
+        int[][] dist_2178 = new int[n_2178][m_2178];    //시작점과의 거리를 저장하는 2차원 배열
+        int[] dx = {1,0,-1,0}; // 상하좌우 계산할 x좌표
+        int[] dy = {0,1,0,01};  // 상하좌우 계산할 y좌표
+
+        for (int i = 0; i < n_2178; i++) {
+            String line = bf.readLine();
+            for (int j = 0; j < m_2178; j++) {
+                a_2178[i][j] = line.charAt(j);
+                dist_2178[i][j] = -1;
+            }
+        }
+
+        Queue<Pair_2178> q = new LinkedList<Pair_2178>();
+        q.offer(new Pair_2178(0,0));    //시작점
+        dist_2178[0][0] = 0;    //첫 시작이니까 거리가 0이다.
+
+        while (!q.isEmpty()) {
+            Pair_2178 p = q.peek(); q.poll();
+//            Pair_2178 p = q.poll();
+            int x = p.x;
+            int y = p.y;
+
+            // 상, 하, 좌, 우를 계산해준다.
+            for (int i = 0; i < 4; i++) {
+                 int nX = x + dx[i];
+                 int nY = y + dy[i];
+
+                // 벽에 부딪히거나, 범위를 넘어가면 PASS
+                if(nX < 0 || nX >= n_2178 || nY < 0 || nY >= m_2178) {
+                    continue;
+                }
+                // 길이 아니거나, 방문을 했다면 PASS
+                if(a_2178[nX][nY] == '0' || dist_2178[nX][nY] != -1) {
+                    continue;
+                }
+
+                // 큐에 이동한 좌표를 넣어준다.
+                q.offer(new Pair_2178(nX,nY));
+                // 한칸 이동하였기 때문에, 이전 출발지점의 거래 +1을 해준다
+                dist_2178[nX][nY] = dist_2178[p.x][p.y] + 1;
+            }
+        }
+
+        // 마지막 지점의 (거리 + 1)를 출력해주면 된다.
+        System.out.print(dist_2178[n_2178-1][m_2178-1] + 1);
+    }
+}
+
+class Pair_2178 {
+    int x;
+    int y;
+    Pair_2178(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 }
