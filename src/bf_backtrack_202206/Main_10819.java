@@ -31,7 +31,7 @@ public class Main_10819 {
         System.out.println(answer);
     }
 
-    // dep : 깊이. prev : 이전 값을 넣는 변수, sum : 총 합계
+    // depth : 깊이. prev : 이전 값을 넣는 변수, sum : 총 합계
     private static void dfs(int depth, int prev, int sum) {
         if (depth == N) {
             answer = Math.max(answer, sum);
