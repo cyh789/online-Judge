@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class Main_10819_차이를최대로 {
+public class Main_10819_차이를최대로_swap_20221021 {
 
     private static int max;
 
@@ -13,7 +13,6 @@ public class Main_10819_차이를최대로 {
         BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
         int n = Integer.parseInt(bf.readLine());
         int[] arr = new int[n];
-        int depth = 0;
         int r = n;
         StringTokenizer st = new StringTokenizer(bf.readLine());
         for (int i = 0; i < n; i++) {
@@ -30,7 +29,7 @@ public class Main_10819_차이를최대로 {
         if (depth == r) {
             int sum = 0;
             for (int i = 0; i < n-1; i++) {
-                sum += Math.abs(arr[i]-arr[i+1]);
+                sum += Math.abs(arr[i] - arr[i + 1]);
             }
             if (max < sum) max = sum;
             return;
