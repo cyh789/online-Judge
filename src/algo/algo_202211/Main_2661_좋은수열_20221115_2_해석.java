@@ -1,10 +1,8 @@
 package algo.algo_202211;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class Main_2661_좋은수열_20221115_2 {
+public class Main_2661_좋은수열_20221115_2_해석 {
 
     // 1. 좋은 수열의 가장 작은 수를 도출해내는 func() 함수의 작업은 아래와 같다.
     //   - 만약 data 문자열의 길이가 n과 같다면 data를 출력하고 시스템을 종료한다.
