@@ -1,4 +1,4 @@
-package programers_floor_1_202305;
+package programers.floor1.algo_20230521;
 
 public class Main_12901 {
 
